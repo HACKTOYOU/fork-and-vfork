@@ -1,0 +1,74 @@
+Program for Process Creation using fork and vfork function:
+
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void main()
+{
+char str[50];
+int a=0,e=0,i=0,o=0,u=0,j,n;
+pid_t pid1,pid2;
+	
+pid2=fork();
+
+if(pid2==0)						
+{
+printf("Child Process runnig\n child Process ID is %d\n",getpid());	
+ exit(0);						
+}
+				
+else								\
+{
+printf("Parent Process runnig\nparent Process ID is     %d\n",getpid());					
+}
+
+pid1=vfork();				
+	
+if(pid1<0)						
+ {
+	printf("Error in forking child\n");
+ }
+	
+   
+if(pid1==0)						
+ {		
+	sleep(1);		
+	printf(" Child process running.....\n child Process ID is %d\n",getpid()\n");				
+
+	printf("Enter String");
+	scanf("%s",str);		
+	exit(0);						
+	 }
+ else								
+ {
+		n=strlen(str);
+for(j=0;j<n;j++)
+		 {
+			if(str[j]=='a' || str[j]=='A')
+			a++;
+
+			if(str[j]=='e' || str[j]=='E')
+			e++;
+			
+			if(str[j]=='i' || str[j]=='I')
+			i++;
+
+			if(str[j]=='o' || str[j]=='O')
+			o++;
+
+			if(str[j]=='u' || str[j]=='U')
+			u++;
+		 }
+printf("Parent Process runnig......\n parent Process ID is %d\n",getpid());");					// printing process id of parent
+	
+		printf("\nNo of Vowels are %d\n",a+e+i+o+u);
+		printf("\nNo of a Vowels are %d\n",a);
+		printf("\nNo of e Vowels are %d\n",e);
+		printf("\nNo of i Vowels are %d\n",i);
+		printf("\nNo of o Vowels are %d\n",o);
+		printf("\nNo of u Vowels are %d\n",u);
+	 }
+}
